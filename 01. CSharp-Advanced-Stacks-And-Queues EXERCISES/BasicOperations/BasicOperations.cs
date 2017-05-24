@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReverseNumbers
+namespace BasicOperations
 {
-    class ReverseNumbers
+    class BasicOperations
     {
         static void Main(string[] args)
         {
