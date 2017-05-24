@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BasicOperations
+namespace TruckTour
 {
-    class BasicOperations
+    class TruckTour
     {
         static void Main(string[] args)
         {
-
         }
     }
 }
