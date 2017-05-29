@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SequenceWithQueues
+namespace ConsoleApp1
 {
-    class SequenceWithQueues
+    class Sequence
     {
         static void Main(string[] args)
         {
@@ -18,12 +18,11 @@ namespace SequenceWithQueues
 
             int index = 0;
             int[] results = new int[50];
-            int current = queue.Peek();
 
             while (queue.Count > 0)
             {
                 int element = queue.Dequeue();
-                results[index] = element; 
+                results[index] = element;
                 index++;
 
                 if (index == 50)
@@ -37,8 +36,7 @@ namespace SequenceWithQueues
 
             }
 
-            Console.WriteLine(String.Join(", ", results));
-
+            Console.WriteLine(String.Join(" ", results));
         }
     }
 }
