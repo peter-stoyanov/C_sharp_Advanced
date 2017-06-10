@@ -1,0 +1,17 @@
+.cs
+--FullDirectoryTraversal.cs - 3.094kb
+--AssemblyInfo.cs - 1.451kb
+--TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs - 0.000kb
+.config
+--App.config - 0.189kb
+.exe
+--FullDirectoryTraversal.exe - 8.704kb
+.pdb
+--FullDirectoryTraversal.pdb - 17.920kb
+.cache
+--DesignTimeResolveAssemblyReferencesInput.cache - 6.912kb
+--CoreCompileInputs.cache - 0.042kb
+.csproj
+--FullDirectoryTraversal.csproj - 2.368kb
+.txt
+--FullDirectoryTraversal.csproj.FileListAbsolute.txt - 0.672kb
