@@ -5,32 +5,51 @@ namespace BashSoft
 {
     public static class OutputWriter
     {
-        public static void WriteMessage(string message)
-        {
-            Console.Write(message);
-        }
-
-        public static void WriteMessageOnNewLine(string message)
-        {
-            Console.WriteLine(message);
-        }
-
+        /// <summary>
+        /// Writes empty line in the console
+        /// </summary>
         public static void WriteEmptyLine()
         {
             Console.WriteLine();
         }
 
-        public static void DisplayException(string message)
+        /// <summary>
+        /// Writes the passed string in the console
+        /// </summary>
+        /// <param name="msg"></param>
+        public static void WriteMessage(string msg)
+        {
+            Console.Write(msg);
+        }
+
+        /// <summary>
+        /// Writes the passed string on a new line in the console
+        /// </summary>
+        /// <param name="msg"></param>
+        public static void WriteMessageOnNewLine(string msg)
+        {
+            Console.WriteLine(msg);
+        }
+
+        /// <summary>
+        /// Displays exseption in the console with color formatting
+        /// </summary>
+        /// <param name="msg"></param>
+        public static void DisplayException(string msg)
         {
             ConsoleColor currentColor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(message);
+            Console.WriteLine(msg);
             Console.ForegroundColor = currentColor;
         }
 
+        /// <summary>
+        /// Prints student data in the console
+        /// </summary>
+        /// <param name="student"></param>
         public static void PrintStudent(KeyValuePair<string, List<int>> student)
         {
-            OutputWriter.WriteMessageOnNewLine(string.Format($"{student.Key} - {string.Join(", ", student.Value)}"));
+            WriteMessageOnNewLine(string.Format($"{student.Key} - {string.Join(", ", student.Value)}"));
         }
     }
 }

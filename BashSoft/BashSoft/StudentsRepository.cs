@@ -8,6 +8,7 @@ namespace BashSoft
     public static class StudentsRepository
     {
         public static bool isDataInitialized = false;
+        //data storage
         private static Dictionary<string, Dictionary<string, List<int>>> studentsByCourse;
 
         public static void InitializeData(string fileName)
@@ -71,6 +72,11 @@ namespace BashSoft
             OutputWriter.WriteMessageOnNewLine("Data read!");
         }
 
+        /// <summary>
+        /// Returns true if the such course exists in the data storage
+        /// </summary>
+        /// <param name="courseName"></param>
+        /// <returns></returns>
         private static bool IsQueryForCoursePossible(string courseName)
         {
             if (isDataInitialized)
@@ -92,6 +98,12 @@ namespace BashSoft
             return false;
         }
 
+        /// <summary>
+        /// Returns true if the such course and student both exist in the data storage
+        /// </summary>
+        /// <param name="courseName"></param>
+        /// <param name="studentUserName"></param>
+        /// <returns></returns>
         private static bool IsQueryForStudentPossible(string courseName, string studentUserName)
         {
             if (IsQueryForCoursePossible(courseName) && studentsByCourse[courseName].ContainsKey(studentUserName))
@@ -106,6 +118,11 @@ namespace BashSoft
             return false;
         }
 
+        /// <summary>
+        /// Outputs the selected student data in the console
+        /// </summary>
+        /// <param name="courseName"></param>
+        /// <param name="username"></param>
         public static void GetStudentScoresFromCourse(string courseName, string username)
         {
             if (IsQueryForStudentPossible(courseName, username))
@@ -114,6 +131,10 @@ namespace BashSoft
             }
         }
 
+        /// <summary>
+        /// Outputs the selected course data in the console
+        /// </summary>
+        /// <param name="courseName"></param>
         public static void GetAllStudentsFromCourse(string courseName)
         {
             if (IsQueryForCoursePossible(courseName))
