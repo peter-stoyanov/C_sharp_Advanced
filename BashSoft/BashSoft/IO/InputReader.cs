@@ -15,12 +15,16 @@ namespace BashSoft
             while (true)
             {
                 OutputWriter.WriteMessage($"{SessionsData.currentPath}> ");
+
                 string input = Console.ReadLine();
+
                 input = input.Trim();
+
                 if (input == endCommand)
                 {
                     break;
                 }
+
                 CommandInterpreter.InterpredCommand(input);
             }
         }

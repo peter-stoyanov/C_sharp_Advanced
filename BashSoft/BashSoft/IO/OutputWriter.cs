@@ -39,7 +39,9 @@ namespace BashSoft
         {
             ConsoleColor currentColor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Red;
+
             Console.WriteLine(msg);
+
             Console.ForegroundColor = currentColor;
         }
 

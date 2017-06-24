@@ -7,9 +7,10 @@ namespace BashSoft
 {
     public static class StudentsRepository
     {
-        public static bool isDataInitialized = false;
         //data storage
         private static Dictionary<string, Dictionary<string, List<int>>> studentsByCourse;
+
+        public static bool isDataInitialized = false;
 
         public static void InitializeData(string fileName)
         {
@@ -57,7 +58,10 @@ namespace BashSoft
                             }
                             else
                             {
-                                studentsByCourse.Add(course, new Dictionary<string, List<int>> { { student, new List<int>() { mark } } });
+                                studentsByCourse.Add(course, new Dictionary<string, List<int>>
+                                {
+                                    { student, new List<int>() { mark } }
+                                });
                             }
                         }
                     }
@@ -140,10 +144,37 @@ namespace BashSoft
             if (IsQueryForCoursePossible(courseName))
             {
                 OutputWriter.WriteMessageOnNewLine($"{courseName}:");
+
                 foreach (var studentMarksEntry in studentsByCourse[courseName])
                 {
                     OutputWriter.PrintStudent(studentMarksEntry);
                 }
+            }
+        }
+
+        public static void FilterAndTake(string courseName, string givenFilter, int? studentsToTake = null)
+        {
+            if (IsQueryForCoursePossible(courseName))
+            {
+                if (studentsToTake == null)
+                {
+                    studentsToTake = studentsByCourse[courseName].Count;
+                }
+
+                RepositoryFilters.FilterAndTake(studentsByCourse[courseName], givenFilter, studentsToTake.Value);
+            }
+        }
+
+        public static void OrderAndTake(string courseName, string comparison, int? studentsToTake = null)
+        {
+            if (IsQueryForCoursePossible(courseName))
+            {
+                if (studentsToTake == null)
+                {
+                    studentsToTake = studentsByCourse[courseName].Count;
+                }
+
+                RepositorySorters.OrderAndTake(studentsByCourse[courseName], comparison, studentsToTake.Value);
             }
         }
     }

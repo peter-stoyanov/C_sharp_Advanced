@@ -8,19 +8,24 @@ namespace BashSoft
     {
         public static void TraverseDirectory(int depth)
         {
-            OutputWriter.WriteEmptyLine();
             int initialIndentation = SessionsData.currentPath.Split('\\').Length;
+
             Queue<string> subFolders = new Queue<string>();
+
             subFolders.Enqueue(SessionsData.currentPath);
+
+            OutputWriter.WriteEmptyLine();
 
             while (subFolders.Count != 0)
             {
                 string currentPath = subFolders.Dequeue();
                 int indentation = currentPath.Split('\\').Length - initialIndentation;
+
                 if (depth - indentation < 0)
                 {
                     break;
                 }
+
                 OutputWriter.WriteMessageOnNewLine(string.Format("{0}{1}", new string('-', indentation), currentPath));
 
                 try
@@ -29,10 +34,12 @@ namespace BashSoft
                     {
                         int indexOfLastSlash = file.LastIndexOf("\\");
                         string filename = file.Substring(indexOfLastSlash);
+
                         OutputWriter.WriteMessageOnNewLine(new string('-', indexOfLastSlash) + filename);
                     }
 
                     var subDirectories = Directory.GetDirectories(currentPath);
+
                     foreach (var subDir in subDirectories)
                     {
                         subFolders.Enqueue(subDir);
@@ -40,11 +47,8 @@ namespace BashSoft
                 }
                 catch (UnauthorizedAccessException)
                 {
-
                     OutputWriter.DisplayException(ExceptionMessages.UnauthorizedAccessExceptionMessage);
                 }
-
-
             }
         }
 
@@ -59,7 +63,6 @@ namespace BashSoft
             {
                 OutputWriter.DisplayException(ExceptionMessages.ForbiddenSymbolsContainedInName);
             }
-
         }
 
         public static void ChangeCurrentDirectoryRelative(string relativePath)
@@ -71,18 +74,19 @@ namespace BashSoft
                     string currentPath = SessionsData.currentPath;
                     int indexOfLastSlash = currentPath.LastIndexOf("\\");
                     string newPath = currentPath.Substring(0, indexOfLastSlash);
+
                     SessionsData.currentPath = newPath;
                 }
                 catch (ArgumentOutOfRangeException)
                 {
                     OutputWriter.DisplayException(ExceptionMessages.UnableToGoHigherInPartitionHierarchy);
                 }
-
             }
             else
             {
                 string currentPath = SessionsData.currentPath;
                 currentPath += "\\" + relativePath;
+
                 ChangeCurrentDirectoryAbsolute(currentPath);
             }
         }
